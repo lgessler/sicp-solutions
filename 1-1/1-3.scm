@@ -4,12 +4,14 @@
 (+ (square x) (square y)))
 
 ; begin program
-(define (two-greatest-of-three x y z)
-  (cond ((and (< x y) (< x z)) (list y z))
-        ((and (< y x) (< y z)) (list x y))
-        (else (list x z))))
+(define (larger x y)
+  (if (> x y) x y))
+(define (smaller x y)
+  (if (< x y) x y))
 
 (define (sum-of-squares-for-two-greatest-of-three x y z)
-  (apply sum-of-squares (two-greatest-of-three x y z)))
+  (sum-of-squares
+    (larger x y)
+    (larger (smaller x y) z)))
   
 (sum-of-squares-for-two-greatest-of-three 3 4 5)
