@@ -21,4 +21,4 @@
   (cbrt-iter 1.0 x))
 
 ; yields 5.000000000287929
-(cbrt 125)
+(cbrt 343)
