@@ -17,9 +17,12 @@
   (map (lambda (w) (dot-product v w)) m))
 
 (define (transpose m)
-  (accumulate-n  '() m)
+  (accumulate-n (lambda (x y) (cons x y)) '() m))
 
 
 (matrix-*-vector
   '((1 2) (3 4))
   '(4 7))
+
+(transpose '((1 2) (3 4)))
+(transpose '((1 2 3) (4 5 6)))
