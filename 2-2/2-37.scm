@@ -19,6 +19,13 @@
 (define (transpose m)
   (accumulate-n (lambda (x y) (cons x y)) '() m))
 
+(define (matrix-*-matrix m n)
+  (let ((cols (transpose n)))
+    (map (lambda (row) 
+           (map (lambda (col)
+                  (dot-product row col))
+                cols)) 
+         m)))
 
 (matrix-*-vector
   '((1 2) (3 4))
@@ -26,3 +33,7 @@
 
 (transpose '((1 2) (3 4)))
 (transpose '((1 2 3) (4 5 6)))
+
+(matrix-*-matrix
+  '((1 0) (0 1))
+  '((3 4) (5 6)))
